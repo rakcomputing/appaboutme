@@ -28,9 +28,9 @@ export default function PersonalWebsite() {
             </CardHeader>
             <CardBody>
               <p>
-                Hello! I'm a web developer passionate about creating beautiful
-                and functional websites. I specialize in React and modern
-                JavaScript.
+                Hello! I&apos;m a web developer passionate about creating
+                beautiful and functional websites. I specialize in React and
+                modern JavaScript.
               </p>
             </CardBody>
           </Card>
@@ -70,9 +70,9 @@ export default function PersonalWebsite() {
             </CardHeader>
             <CardBody>
               <p>
-                Hi there! I'm a passionate web developer. Feel free to explore
-                my site to learn more about my skills, projects, and how to get
-                in touch.
+                Hi there! I&apos;m a passionate web developer. Feel free to
+                explore my site to learn more about my skills, projects, and how
+                to get in touch.
               </p>
             </CardBody>
           </Card>

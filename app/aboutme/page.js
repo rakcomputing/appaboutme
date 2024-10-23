@@ -1,19 +1,19 @@
 "use client";
-import { useState } from "react";
-import { Button } from "@chakra-ui/react";
-import { Card, CardBody, CardHeader, CardFooter } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
 
-const Github = dynamic(() => import("lucide-react").then((mod) => mod.Github), {
-  ssr: false,
-});
-const Linkedin = dynamic(
-  () => import("lucide-react").then((mod) => mod.Linkedin),
-  { ssr: false }
-);
-const Mail = dynamic(() => import("lucide-react").then((mod) => mod.Mail), {
-  ssr: false,
-});
+import { useState } from "react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardHeader,
+  Heading,
+  Text,
+  UnorderedList,
+  ListItem,
+  Flex,
+  Box,
+} from "@chakra-ui/react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function PersonalWebsite() {
   const [activeSection, setActiveSection] = useState("home");
@@ -24,14 +24,14 @@ export default function PersonalWebsite() {
         return (
           <Card>
             <CardHeader>
-              <h2>About Me</h2>
+              <Heading size="md">About Me</Heading>
             </CardHeader>
             <CardBody>
-              <p>
-                Hello! Im a web developer passionate about creating beautiful
+              <Text>
+                Hello! I'm a web developer passionate about creating beautiful
                 and functional websites. I specialize in React and modern
                 JavaScript.
-              </p>
+              </Text>
             </CardBody>
           </Card>
         );
@@ -39,14 +39,14 @@ export default function PersonalWebsite() {
         return (
           <Card>
             <CardHeader>
-              <h2>My Projects</h2>
+              <Heading size="md">My Projects</Heading>
             </CardHeader>
             <CardBody>
-              <ul className="list-disc pl-5">
-                <li>Personal Website (React)</li>
-                <li>E-commerce Platform (Next.js)</li>
-                <li>Weather App (React Native)</li>
-              </ul>
+              <UnorderedList>
+                <ListItem>Personal Website (React)</ListItem>
+                <ListItem>E-commerce Platform (Next.js)</ListItem>
+                <ListItem>Weather App (React Native)</ListItem>
+              </UnorderedList>
             </CardBody>
           </Card>
         );
@@ -54,10 +54,12 @@ export default function PersonalWebsite() {
         return (
           <Card>
             <CardHeader>
-              <h2>Contact Me</h2>
+              <Heading size="md">Contact Me</Heading>
             </CardHeader>
             <CardBody>
-              <p>Feel free to reach out to me at: your.email@example.com</p>
+              <Text>
+                Feel free to reach out to me at: your.email@example.com
+              </Text>
             </CardBody>
           </Card>
         );
@@ -65,15 +67,15 @@ export default function PersonalWebsite() {
         return (
           <Card>
             <CardHeader>
-              <h2>Welcome to My Personal Website</h2>
-              <p>Explore to learn more about me and my work</p>
+              <Heading size="md">Welcome to My Personal Website</Heading>
+              <Text>Explore to learn more about me and my work</Text>
             </CardHeader>
             <CardBody>
-              <p>
-                Hi there! Im a passionate web developer. Feel free to explore my
-                site to learn more about my skills, projects, and how to get in
-                touch.
-              </p>
+              <Text>
+                Hi there! I'm a passionate web developer. Feel free to explore
+                my site to learn more about my skills, projects, and how to get
+                in touch.
+              </Text>
             </CardBody>
           </Card>
         );
@@ -81,11 +83,18 @@ export default function PersonalWebsite() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <header className="p-4 bg-primary text-primary-foreground">
-        <nav className="flex justify-between items-center max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold">Raksmey Chann</h1>
-          <div className="space-x-4">
+    <Flex direction="column" minHeight="100vh" bg="gray.100">
+      <Box as="header" p={4} bg="gray.100" color="black">
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          maxWidth="4xl"
+          margin="auto"
+        >
+          <Heading as="h1" size="lg">
+            Raksmey Chann
+          </Heading>
+          <Flex>
             <Button variant="ghost" onClick={() => setActiveSection("home")}>
               Home
             </Button>
@@ -101,38 +110,49 @@ export default function PersonalWebsite() {
             <Button variant="ghost" onClick={() => setActiveSection("contact")}>
               Contact
             </Button>
-          </div>
-        </nav>
-      </header>
+          </Flex>
+        </Flex>
+      </Box>
 
-      <main className="flex-grow p-4">
-        <div className="max-w-4xl mx-auto">{renderContent()}</div>
-      </main>
+      <Box as="main" flexGrow={1} p={4}>
+        <Box maxWidth="4xl" margin="auto">
+          {renderContent()}
+        </Box>
+      </Box>
 
-      <footer className="p-4 bg-secondary text-secondary-foreground">
-        <div className="max-w-4xl mx-auto flex justify-between items-center">
-          <p>&copy; 2023 Your Name. All rights reserved.</p>
-          <div className="flex space-x-4">
-            <a
+      <Box as="footer" p={4} bg="gray.200">
+        <Flex
+          justifyContent="space-between"
+          alignItems="center"
+          maxWidth="4xl"
+          margin="auto"
+        >
+          <Text>&copy; 2023 Your Name. All rights reserved.</Text>
+          <Flex>
+            <Button
+              as="a"
               href="https://github.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
+              variant="ghost"
             >
-              <Github className="h-6 w-6" />
-            </a>
-            <a
+              <Github />
+            </Button>
+            <Button
+              as="a"
               href="https://linkedin.com/in/yourusername"
               target="_blank"
               rel="noopener noreferrer"
+              variant="ghost"
             >
-              <Linkedin className="h-6 w-6" />
-            </a>
-            <a href="mailto:your.email@example.com">
-              <Mail className="h-6 w-6" />
-            </a>
-          </div>
-        </div>
-      </footer>
-    </div>
+              <Linkedin />
+            </Button>
+            <Button as="a" href="mailto:your.email@example.com" variant="ghost">
+              <Mail />
+            </Button>
+          </Flex>
+        </Flex>
+      </Box>
+    </Flex>
   );
 }
